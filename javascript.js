@@ -7,7 +7,6 @@ let player=0;
 
 
   function computerPlay() {
-
     let number=Math.floor(Math.random()*3+1);
     switch (number) {
       case 1: return r;
@@ -32,8 +31,8 @@ let player=0;
   }
   function count(x,y) {
           if (x===y) return draw
-            else if (x>y) {console.log('You won!')}
-              else console.log('Comp won!')
+            else if (x>y) {return 'You are a winner !'}
+              else {return 'Computer is a winner!'}
   } 
     
  
@@ -48,5 +47,24 @@ let player=0;
      }
    }
   }
-  
-   game();
+   
+    const buttons=document.querySelectorAll('button');
+    const container=document.querySelector('#container');
+    buttons.forEach((button)=> {
+      button.addEventListener('click',() => {
+        if ((player<5)&&(comp<5)){
+          const computerSelection=computerPlay();
+          const playerSelection=button.textContent;
+          const div=document.createElement('div');
+          container.appendChild(div);
+          const score=playRound(playerSelection,computerSelection);
+          div.textContent=`you = ${playerSelection}  comp= ${computerSelection}     score: ${score}`;
+          if (player===5||comp===5) {
+            const winner=document.createElement('h2');
+            container.appendChild(winner);
+            winner.textContent=count(score.charAt(0),score.charAt(2)) ;
+          
+          }
+        } 
+      });
+    });
