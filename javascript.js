@@ -34,20 +34,6 @@ let player=0;
             else if (x>y) {return 'You are a winner !'}
               else {return 'Computer is a winner!'}
   } 
-    
- 
-  function game() {
-   for ( let i=0; i<5; i++) {
-      const playerSelection=(prompt('input value: Rock, Paper, Scissors','')).toLowerCase();
-      const computerSelection=computerPlay();
-      let score=playRound(playerSelection,computerSelection);
-      console.log('you='+playerSelection,'comp='+computerSelection,'score:'+ score);
-      if (i===2) {
-       count(score.charAt(0),score.charAt(2)) 
-     }
-   }
-  }
-   
     const buttons=document.querySelectorAll('button');
     const container=document.querySelector('#container');
     buttons.forEach((button)=> {
@@ -65,6 +51,7 @@ let player=0;
             winner.textContent=count(score.charAt(0),score.charAt(2)) ;
           
           }
+          
         } 
       });
     });
